@@ -2,7 +2,6 @@ server {
     listen 80;
     server_name linhn312.com www.linhn312.com;
 location / {
-		limit_req zone=mylimit;
         proxy_pass http://wp.default.svc.cluster.local;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
