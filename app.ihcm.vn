@@ -8,6 +8,8 @@ location /app1 {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_cookie_domain app1.default.svc.cluster.local:8080 app.ihcm.vn;
+        proxy_cookie_path $uri /app1$uri;
     }
 location /app2 {
 		limit_req zone=mylimit;
@@ -16,5 +18,7 @@ location /app2 {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_cookie_domain app2.default.svc.cluster.local:8080 app.ihcm.vn;
+        proxy_cookie_path $uri /app2$uri;
     }
 }
