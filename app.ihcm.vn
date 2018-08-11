@@ -2,7 +2,7 @@ server {
     listen 80;
     server_name app.ihcm.vn;
 location /app1 {
-		limit_req zone=mylimit;
+		#limit_req zone=mylimit;
         proxy_pass http://app1.default.svc.cluster.local:8080;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
@@ -12,7 +12,7 @@ location /app1 {
         proxy_cookie_path $uri /app1$uri;
     }
 location /app2 {
-		limit_req zone=mylimit;
+		#limit_req zone=mylimit;
         proxy_pass http://app2.default.svc.cluster.local:8080;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
